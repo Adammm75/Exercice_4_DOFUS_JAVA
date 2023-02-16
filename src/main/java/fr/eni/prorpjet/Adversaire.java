@@ -17,7 +17,14 @@ public class Adversaire {
     private int coupCritique;
     private int zone;
     public Adversaire(String unNom, int unNbPvActuel, int unNbPvMax, int uneAtk, int uneDef, int unCC)
-    {        
+    {   
+        this.nomAdversaire = unNom;
+        this.pvActuel = unNbPvActuel;
+        this.pvMax= unNbPvMax;
+        this.attaque = uneAtk;
+        this.defense = uneDef;
+        this.coupCritique = unCC;
+        
         /*
         Ecrire le constructeur.
         */
@@ -81,21 +88,38 @@ public class Adversaire {
 
     
     public void affStatsCombat() {
+               
+        System.out.println("l'Adversaire est : " + this.nomAdversaire );
+        System.out.println("l'Adversaire possède : " + this.pvActuel/ this.pvMax + "  pv" );
+        System.out.println("Vos statistiques sont les suivantes : " );
+        System.out.println("l'Adversaire a : " + this.attaque + " d'attaque" );
+        System.out.println("l'Adversaire a : " + this.defense + "defense");
+        System.out.println("l'Adversaire a : " + this.coupCritique + "de Coupcritique");
         /*
         Cette fonction affiche les stats de l'adversaire. (Nom, PV, Att, Def, Crit)
         */
     }
     public void subirDegat(int attaquePersonnage, boolean critiquePersonnage)
     {
-        /*
-        Cette fonction va servir à faire baisser les points de vie de l'adversaire.
-        Vous devrez modifier l'attribut "pvActuel" de l'adversaire pointé.
-        Deux arguments :
-         -> attaquePersonnage qui correspond à l'attaque du joueur.
-         -> critiquePersonnage qui dit si un joueur à réaliser un coup critique ou non.
-        Calcul des dégâts : attaquePersonnage + (attaquePersonnage si critiquePersonnage == true) - defense de l'adversaire.
+
+        if (critiquePersonnage== true) {
+        this.pvActuel= (attaquePersonnage*2) - this.defense;
         
-        /!\ Attention au calcul des dégâts donnant un résultat négatif /!\
-        */
+                if(this.pvActuel<0){
+                    this.pvActuel=0;
+                }
+                        else {
+                            System.out.println("les nouveaux pv de l'adversaire s'élève à :" +  this.pvActuel);
+                    }
+        }        
+        else {
+        this.pvActuel= attaquePersonnage - this.defense;
+                if(this.pvActuel<0){
+                        this.pvActuel=0;
+                }
+        
+        System.out.println("les nouveaux pv de l'Adversaire s'élèvent à :" + this.pvActuel);
+        }
+
     }
 }

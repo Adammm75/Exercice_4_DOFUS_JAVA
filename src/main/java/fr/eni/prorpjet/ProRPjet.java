@@ -548,25 +548,38 @@ public class ProRPjet {
     }
     public static int affCoffre(int multiplicateurGain)
     {
+        int randomNum = (int)(Math.random() * 100);  // 0 to 100
+        System.out.println("Le gain s'élève à  :" + randomNum);
+        float resultat = randomNum * multiplicateurGain;
+        int resultat1 = (int) resultat;
+        System.out.print("La somme gagnée s'élève à " + resultat1);
+        return resultat1;
+
+        
         /*
         Cette fonction retourne le gain suite à l'ouverture du coffre.
         Ce gain sera généré aléatoirement entre 1 et 100.
         Le multiplicateurGain permet d'augmenter le gain en le multipliant.
         Vous afficherez un message indiquant la somme gagnée.
         */
-        return 0;
+
     }
     public static int affCoffrePiege(int degat)
     {
+        System.out.print("Vous avez perdu :" + degat);
+        System.out.print("Vous êtes tombé sur un coffre piègé");
+        return degat;
+
         /*
         Cette fonction retourne la variable dégât suite à l'ouverture du coffre.
         Vous afficherez un message indiquant au joueur qu'il est tombé sur un coffre piégé.
         Vous afficherez également le nombre de pv qu'il a perdu.
         */
-        return 0;
+
     }
     public static void affCoffreVide()
     {
+        System.out.print("Le coffre est vide");
         /*
         Cette fonction affiche un message expliquant que le coffre est vide.
         */
